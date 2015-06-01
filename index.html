@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>backgrounds</title>
+</head>
+<body>
+   
+    <div id="top-image">        
+        <div class="left-breast"></div>
+        <div class="right-breast"></div>        
+    </div>
+    
+    <style>
+        body{
+            cursor: url(cursor.png), auto;
+            margin: 0;
+            padding: 0;
+        }
+        #top-image {
+            background:url(maxresdefault.jpg) -25px -50px;
+            position:fixed ;
+            top:0;
+            width:100%;
+            z-index:0;
+            height:100%;           
+        }
+        .left-breast,
+        .right-breast{            
+            position: absolute;            
+            z-index: 3;
+        }
+        .left-breast{
+            left: 11.5%;
+            width: 315px;
+            height: 510px;
+            top: 29%;
+            border-radius: 550px 0 288px 270px;
+            cursor: url(finger03.gif), auto;           
+        }
+        .right-breast{
+            left: 30%;
+            top: 42%;
+            width: 519px;
+            border-radius: 220px;
+            height: 550px;
+            cursor: url(cursor-edit-th.png), auto;
+        }
+    </style>
+    
+    <!--JavaScript-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 
+    <script>
+    $(document).ready(function() {
+        var movementStrength = 25;
+        var height = movementStrength / $(window).height();
+        var width = movementStrength / $(window).width();
+        $("#top-image").mousemove(function(e){
+                  var pageX = e.pageX - ($(window).width() / 2);
+                  var pageY = e.pageY - ($(window).height() / 2);
+                  var newvalueX = width * pageX * -1 - 25;
+                  var newvalueY = height * pageY * -1 - 50;
+                  $('#top-image').css("background-position", newvalueX+"px     "+newvalueY+"px");
+        });
+    });
+    </script>
+    
+</body>
+</html>
